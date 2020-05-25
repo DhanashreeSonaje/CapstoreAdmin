@@ -1,0 +1,52 @@
+<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;text-align: center;"> Products</h1>
+<header>
+    
+     <nav class ="navbar navbar-expand-md navbar-dark bg-secondary justify-content-end">
+       <ul class="navbar-nav">
+        <li><a routerLink = "/admin" style="color: white;">Admin</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li><a routerLink = "/addProducts" style="color: white;">Add Product</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li><a routerLink = "/updateCategory" style="color: white;">Update Category</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!--<li><a routerLink = "/getFeaturedProducts" style="color: white">Show All Featured Products</a></li>-->
+       </ul>
+     </nav>    
+  </header>
+ 
+
+<button (click)="back()"  class="btn btn-secondary" style="margin-left: 10px"><<Back</button>
+
+  
+
+<table class="table table-striped table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Brand</th>
+        <th>Product Info</th>
+        <th>Product Image</th>
+        <th><input type="any" name="searchTerm" id="myInput" style="width: 300px;" placeholder="Search.." [(ngModel)]=searchTerm/>&nbsp;&nbsp;
+     </th>
+    </tr>
+  </thead>
+    <tr *ngFor="let p of products |filterProduct:searchTerm">
+        <td>{{p.productId}}</td>
+        <td>{{p.productName}}</td>
+        <td>{{p.productPrice}}</td>
+        <td>{{p.productBrand}}</td>
+        <td>{{p.productInfo}}</td>
+        <td><img [src]="p.productImage" height="300px" width=300px></td>
+        <td>
+          <button (click)="update()" class="btn btn-info" style="margin-left: 10px">Update</button>
+          <button (click)="deleteProduct(p.productId)"  class="btn btn-danger">Delete</button>
+       </td>
+
+
+    </tr>
+
+</table>
+<div id="searchBox">
+  <input type="text" ng-model="searchTerm.$" placeholder="Search..">
+
+</div>
+<button (click)="back()"  class="btn btn-secondary" style="margin-left: 10px">Back</button>

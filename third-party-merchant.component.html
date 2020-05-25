@@ -1,0 +1,113 @@
+<p>third-party-merchant works!</p>
+
+<h1 align="center"> Add Third Party Merchant</h1>
+<div class="jumbotron" align="center">
+    <form #merchantForm="ngForm" name="signUpForm" (ngSubmit)="addMerchant()">
+
+
+        <div class="form-group">
+            <label for="userName">Enter UserName</label>
+            <input type="text" maxlength="20" pattern="[a-zA-Z]*" id="userName" name="userName"
+                class="form-control" [(ngModel)]="merchant1.username" #userName="ngModel"
+                placeholder="Enter Merchant UserName" required autocomplete="off"
+                aria-describedby="merchantNameHelp">
+            <small id="merchantNameHelp" class="form-text text-muted alert alert-danger" role="alert"
+                *ngIf="userName.touched && userName.invalid && !userName.errors?.pattern">
+              UserName is required</small>
+            <small id="merchantNameHelp" class="form-text text-muted alert alert-danger" role="alert"
+                *ngIf="userName.touched && userName.errors?.pattern && userName.invalid">
+                Invalid UserName
+            </small>
+            
+        </div>
+        <div class="form-group">
+            <label for="inputname">Enter Name</label>
+            <input type="text" maxlength="20" pattern="[a-zA-Z]*" id="name" name="name"
+                class="form-control" [(ngModel)]="merchant1.name" #name="ngModel"
+                placeholder="Enter Merchant Name" required autocomplete="off"
+                aria-describedby="merchantNameHelp">
+            <small id="merchantNameHelp" class="form-text text-muted alert alert-danger" role="alert"
+                *ngIf="name.touched && name.invalid && !name.errors?.pattern">
+              Name is required</small>
+            <small id="merchantNameHelp" class="form-text text-muted alert alert-danger" role="alert"
+                *ngIf="name.touched && name.errors?.pattern && name.invalid">
+                Invalid Name
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="inputname">Enter Phone number</label>
+            <input type="text" maxlength="20" pattern="[1-9][0-9]{9}" id="phoneno" name="phoneno"
+                class="form-control" [(ngModel)]="merchant1.phone_number" #phone="ngModel"
+                placeholder="Enter Mobile number" required autocomplete="off"
+                aria-describedby="mobileHelp">
+                <small id="mobileHelp" class="form-text text-muted alert alert-danger" role="alert"
+                    *ngIf="phone.touched && phone.invalid && !phone.errors?.pattern">
+                    Mobile Number is required</small>
+                <small id="mobileHelp" class="form-text text-muted alert alert-danger" role="alert"
+                    *ngIf="phone.touched && phone.errors?.pattern && phone.invalid">
+                    Mobile Number must be of 10 digits
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="inputname">Enter Alternate Phone number</label>
+                <input type="text" maxlength="20" pattern="[1-9][0-9]{9}" id="altphoneno" name="altphoneno"
+                    class="form-control" [(ngModel)]="merchant1.alternate_phone_number" #altphone="ngModel"
+                    placeholder="Enter Mobile number" required autocomplete="off"
+                    aria-describedby="mobileHelp">
+                    <small id="mobileHelp" class="form-text text-muted alert alert-danger" role="alert"
+                        *ngIf="altphone.touched && altphone.invalid && !altphone.errors?.pattern">
+                        Mobile Number is required</small>
+                    <small id="mobileHelp" class="form-text text-muted alert alert-danger" role="alert"
+                        *ngIf="altphone.touched && altphone.errors?.pattern && altphone.invalid">
+                        Mobile Number must be of 10 digits
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="userName">Enter Email</label>
+                    <input type="email" maxlength="20" id="emailid" name="emailid"
+                        class="form-control" [(ngModel)]="merchant1.alternate_email" #emailid="ngModel"
+                        placeholder="Enter Merchant Email" required autocomplete="off"
+                        aria-describedby="merchantemailHelp">
+                    <small id="merchantNameHelp" class="form-text text-muted alert alert-danger" role="alert"
+                        *ngIf="emailid.touched && emailid.invalid && !emailid.errors?.pattern">
+                      Email is required</small>
+                    
+                </div>
+                <div class= "form-group">
+                    <label for="inputpassword"> Enter Password</label>
+                    <input type="password" maxlength="20" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{8,20})"
+                        id="password" name="password" [(ngModel)]="merchant1.password" #passwordcontrol="ngModel" 
+                        autocomplete="off" required class="form-control" placeholder="Enter Merchant Password"
+                        aria-describedby="passwordHelp">
+                    <small id="passwordHelp" class="form-text text-muted alert alert-danger" role="alert"
+                        *ngIf="passwordcontrol.touched && passwordcontrol.invalid && !passwordcontrol.errors?.pattern">
+                        Password is required</small>
+                    <small id="passwordHelp" class="form-text text-muted alert alert-danger" role="alert"
+                        *ngIf="passwordcontrol.touched && passwordcontrol.errors?.pattern &&    passwordcontrol.invalid">
+                        Password must contain lowercase, uppercase and special characters (8-20) characters
+
+                    </small>
+                </div>
+               
+               
+
+
+
+                <br>
+                <div class="form-group">
+
+                  </div>
+                    <label for="approvedMerchant" style="font-size: large;">
+                                    Is this Merchant Approved?
+                      </label>
+                      
+                    <input type="checkbox" name="assuredMerchant" id="assuredMerchant" [checked]="check" (change)="onCheckboxValueChange()"
+                    ngModel value="Assured Merchant"><br>
+                
+                <input type="submit" value="Add Merchant" [disabled]="merchantForm.invalid"  class="btn btn-primary" />
+
+</form>
+</div>
+
+

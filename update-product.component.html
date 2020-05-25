@@ -1,0 +1,222 @@
+<div class="container">
+  
+    <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+      <h1 align="center">Update Product</h1><br>
+      <h5 align="center">Update the details but Product Id, status, activation status and featured status are necesaary</h5>
+  
+      <div class="form-group" style="margin-left: 30%;">
+          <div class="col-lg-7 col-md-7 col-sm-7">
+            <label for="id"><b>Product Id:</b></label><font color="red">*</font>
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7">
+            <input type="number" class="form-control" placeholder="Enter Product Id" 
+            formControlName="id" required [(ngModel)]="product.productId">
+           <div *ngIf="submitted && productForm.controls.id.errors" class="error">
+              <div class="text-danger" *ngIf="productForm.controls.id.errors.required">
+                <font color="red">ID is required</font>
+              </div>
+            </div>
+          </div>
+      </div>
+      <br>
+  
+      
+      <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="name"><b>Product Name:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="text" class="form-control" placeholder="Enter Product Name" 
+          formControlName="name" [(ngModel)]="product.productName">
+         <!-- <div *ngIf="submitted && productForm.controls.name.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.name.errors.required">
+              <font color="red">Name is required</font>
+            </div>
+          </div> -->
+         </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="image"><b>Product Image:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="text" class="form-control" placeholder="Enter Image Url" 
+          formControlName="image" [(ngModel)]="product.productImage">
+         <!-- <div *ngIf="submitted && productForm.controls.image.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.image.errors.required">
+              <font color="red">Image Url is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="price"><b>Product Price:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" class="form-control" placeholder="Enter Product Price" 
+          formControlName="price" [(ngModel)]="product.productPrice">
+         <!-- <div *ngIf="submitted && productForm.controls.price.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.price.errors.required">
+              <font color="red">Price is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="rating"><b>Product Rating:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" min=1 max=5 class="form-control" placeholder="Enter Product Rating" 
+          formControlName="rating" [(ngModel)]="product.productRating">
+         <!-- <div *ngIf="submitted && productForm.controls.rating.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.rating.errors.required">
+              <font color="red">Product Rating is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="viewed"><b>Number of Products Viewed:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" min=0 class="form-control" placeholder="Enter Number of Products Viewed" 
+          formControlName="viewed" [(ngModel)]="product.noOfProductViewed">
+         <!-- <div *ngIf="submitted && productForm.controls.viewed.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.viewed.errors.required">
+              <font color="red">Number of Products Viewed is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="numberProducts"><b>Number of Products:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" min=0 class="form-control" placeholder="Enter Number of Products" 
+          formControlName="numberProducts" [(ngModel)]="product.noOfProducts">
+         <!-- <div *ngIf="submitted && productForm.controls.numberProducts.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.numberProducts.errors.required">
+              <font color="red">Number of Products is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="brand"><b>Product Brand:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="text" class="form-control" placeholder="Enter Product Brand" 
+          formControlName="brand" [(ngModel)]="product.productBrand">
+         <!-- <div *ngIf="submitted && productForm.controls.brand.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.brand.errors.required">
+              <font color="red">Brand is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="info"><b>Product Info:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="text" class="form-control" placeholder="Enter Product Info"
+          formControlName="info" [(ngModel)]="product.productInfo">
+         <!-- <div *ngIf="submitted && productForm.controls.info.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.info.errors.required">
+              <font color="red">Info is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="category"><b>Product Category:</b></label>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="text" class="form-control" placeholder="Enter Product Category" 
+          formControlName="category" [(ngModel)]="product.productCategory">
+         <!-- <div *ngIf="submitted && productForm.controls.category.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.category.errors.required">
+              <font color="red">Category is required</font>
+            </div>
+          </div> -->
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="activated"><b>Is the Product Activated?:</b></label><font color="red">*</font>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" min=0 max=1 class="form-control" placeholder="Enter Product Activation status" 
+          formControlName="activated" required [(ngModel)]="product.productActivated">
+         <div *ngIf="submitted && productForm.controls.activated.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.activated.errors.required">
+              <font color="red">Product Activation status is required</font>
+            </div>
+          </div>
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="status"><b>Product Status:</b></label><font color="red">*</font>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" min=0 max=1 class="form-control" placeholder="Enter Product Status" 
+          formControlName="status" required [(ngModel)]="product.status">
+         <div *ngIf="submitted && productForm.controls.status.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.status.errors.required">
+              <font color="red">Product Status is required</font>
+            </div>
+          </div>
+        </div>
+    </div>
+    <br>
+  
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <label for="featured"><b>Is the Product Featured?:</b></label><font color="red">*</font>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <input type="number" min=0 max=1 class="form-control" placeholder="Enter Product Featured status" 
+          formControlName="featured" required [(ngModel)]="product.featured">
+         <div *ngIf="submitted && productForm.controls.featured.errors" class="error">
+            <div class="text-danger" *ngIf="productForm.controls.featured.errors.required">
+              <font color="red">Product Featured status is required</font>
+            </div>
+          </div>
+        </div>
+    </div>
+    <br>
+  
+        <div class="offset-lg-4 col-lg-4 offset-md-4 col-md-4 offset-sm-4 col-sm-4" style="margin-left: 43%;">
+          <button class="btn btn-primary" type="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-secondary" type="button" (click)="back()">Back</button>
+        </div>
+  
+  </form>
+  </div>

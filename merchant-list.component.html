@@ -1,0 +1,35 @@
+<p>merchant-list works!</p>
+<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;text-align: center;"> MERCHANT DETAILS</h1>
+<button (click)="back()"  class="btn btn-secondary" style="margin-left: 10px"><<Back</button>
+&nbsp;&nbsp;
+
+    <table class="table table-striped table table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>Merchant Id</th>
+            <th>Merchant Name</th>
+            <th>EmailId</th>
+            <th>Merchant Phone No.</th>
+            <th>Merchant Alternate Phone No.</th>
+            <th>Rating</th>
+            <th><input type="text" name="searchTerm" style="width: 300px;" placeholder="Search by name of Merchant" [(ngModel)]="searchTerm"/></th>
+
+
+        </tr>
+      </thead>
+        <tr *ngFor="let m of merchantList |filterMerchant:searchTerm">
+            <td>{{m.userId}}</td>
+            <td>{{m.name}}</td>
+            <td>{{m.eMail}}</td>
+            <td>{{m.phoneNumber}}</td>
+            <td>{{m.alternatePhoneNumber}}</td>
+            <td>{{m.rating}}</td>
+            <td><button  (click)="deleteMerchant(m.userId)" class="btn btn-danger">Delete</button>
+                <button  class="btn btn-info" style="margin-left: 10px">Update</button>
+           
+
+
+        </tr>
+
+    </table>
+<button (click)="back()"  class="btn btn-secondary" style="margin-left: 10px">Back</button>

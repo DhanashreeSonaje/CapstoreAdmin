@@ -1,0 +1,100 @@
+<p>show-promocode works!</p>
+<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;text-align: center;"> SHOW PROMOCODE</h1>
+<div class="container">
+  
+    <div [hidden]="submitted">
+      
+        <div class="panel-heading">
+            <h1>Coupons</h1>
+        </div>
+        <div class="panel-body">
+  
+          <label>Search By:</label>
+      <select id="searchBy" required [(ngModel)]="searchBy" class="form-control"
+      name="searchBy">
+        <option value="couponId" (click)="searchById()">Id</option>
+        <option value="couponCode" (click)="searchByCode()">Code</option>
+      </select><br>
+  
+          <form [hidden]="subId" #search1="ngForm">
+            <div class="form-group">
+              <label for="couponId">Coupon Id:</label>
+              <input type="number" class="form-control" id="couponId" required [(ngModel)]="couponId" name="couponId" #cid>
+            </div>
+        
+            <div class="btn-group">
+              <button (click)="showCouponsById(cid)" [disabled]="search1.form.invalid" class="btn btn-info" style="margin-left: 10px">Submit</button>
+            </div>
+          </form>
+  
+          <form [hidden]="subCode" #search="ngForm">
+            <div class="form-group">
+              <label for="couponCode">Coupon Code:</label>
+              <input type="string" class="form-control" id="couponCode" required [(ngModel)]="couponCode" name="couponCode" #cid>
+            </div>
+        
+            <div class="btn-group">
+              <button (click)="showCouponsByCode(cid)" [disabled]="search.form.invalid" class="btn btn-info" style="margin-left: 10px">Submit</button>
+            </div>
+          </form>
+          <div class="error">
+            <div *ngIf="error">{{error}}</div><br>
+          </div>
+            <table class="table table-striped table-hover" style="color:indigo" >
+              <thead>
+                <tr>
+                    <th>Coupon Id</th>
+                    <th>Coupon Code</th>
+                    <th>Coupon Start Date</th>
+                    <th>Coupon End Date</th>
+                    <th>Coupon Amount</th>
+                    <th>Coupon Min Order Amount</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of coupon | async">
+                    <td>{{c.couponId}}</td>
+                    <td>{{c.couponCode}}</td>
+                    <td>{{c.couponStartDate}}</td>
+                    <td>{{c.couponEndDate}}</td>
+                    <td>{{c.couponAmount}}</td>
+                    <td>{{c.couponMinOrderAmount}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        
+        </div>
+    <div [hidden]="!submitted">
+          
+        <div class="panel-body">
+            <table class="table table-striped table-hover" style="color:indigo" >
+                <thead>
+                    <tr>
+                        <th>Coupon Id</th>
+                        <th>Coupon Code</th>
+                        <th>Coupon Start Date</th>
+                        <th>Coupon End Date</th>
+                        <th>Coupon Amount</th>
+                        <th>Coupon Min Order Amount</th>
+                      </tr>
+                </thead>
+                <tbody>
+                  <tr *ngIf="coupon1">
+                    <td>{{coupon1.couponId}}</td>
+                    <td>{{coupon1.couponCode}}</td>
+                    <td>{{coupon1.couponStartDate}}</td>
+                    <td>{{coupon1.couponEndDate}}</td>
+                    <td>{{coupon1.couponAmount}}</td>
+                    <td>{{coupon1.couponMinOrderAmount}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-info" (click)="backToCoupons()">Back</button>
+        </div>
+    </div>
+    </div>
+<button (click)="back()"  class="btn btn-secondary" style="margin-left: 10px"><<Back</button>
+
+
+

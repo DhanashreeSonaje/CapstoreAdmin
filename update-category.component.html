@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <h1 align="center">Update Category</h1>
+    <br><br>
+    <form name="Category" id="Category" [formGroup]="categoryForm" (ngSubmit)="updateCate()">
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+        <label for="prCategory">Product Category:</label><font style="color: red;">*</font>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+        <input type="text" class="form-control" formControlName="prCategory" placeholder="Enter Product Category" required>
+        <div *ngIf="submitted && categoryForm.controls.prCategory.errors" class="error">
+            <div class="text-danger" *ngIf="categoryForm.controls.prCategory.errors.required">
+                <font color="red">Product Category is required</font>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group" style="margin-left: 30%;">
+        <div class="col-lg-7 col-md-7 col-sm-7">
+        <label for="updateCategory">New Product Category:</label><font style="color: red;">*</font>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+        <input type="text" class="form-control" formControlName="updateCategory" placeholder="Enter New Product Category" required>
+        <div *ngIf="submitted && categoryForm.controls.updateCategory.errors" class="error">
+            <div class="text-danger" *ngIf="categoryForm.controls.updateCategory.errors.required">
+                <font color="red">New Product Category is required</font>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="offset-lg-4 col-lg-4 offset-md-4 col-md-4 offset-sm-4 col-sm-4" style="margin-left: 43%;">
+    <button class="btn btn-primary" type="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-secondary" type="button" (click)="back()">Back</button>
+    </div>
+    </form>
+</div>

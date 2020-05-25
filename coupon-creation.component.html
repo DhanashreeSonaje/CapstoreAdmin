@@ -1,0 +1,47 @@
+<h2>Coupon Creation</h2>
+<div class="container">
+  
+<div [hidden]="submitted" style="width: 300px;">
+  
+  <form #actCreateForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <label for="couponCode">Coupon Code:</label>
+    <input id="couponCode" name="couponCode" class="form-control" [(ngModel)]="coupons.couponCode" #couponCode="ngModel" >
+
+    <!-- <label for="userId">Merchant ID:</label>
+    <input id="userId" name="userId" class="form-control" [(ngModel)]="coupons.userId" #userId="ngModel" > -->
+
+    <label for="couponStartDate">CouponStartDate:</label>
+    <input id="couponStartDate" type="date" name="couponStartDate" class="form-control" required  [(ngModel)]="coupons.couponStartDate" 
+    #couponStartDate="ngModel">
+  
+    <label for="couponEndDate">CouponEndDate:</label>
+    <input type="date" class="form-control" id="couponEndDate" required [(ngModel)]="coupons.couponEndDate" 
+    name="couponEndDate" #couponEndDate="ngModel">
+
+    <label for="couponAmount">Coupon Amount:</label>
+    <input type="number" class="form-control" name="couponAmount" [(ngModel)]="coupons.couponAmount" 
+    #couponAmount="ngModel" required >
+  
+    <label for="couponMinOrderAmount">Minimum Amount:</label>
+    <input type="number" class="form-control" id="couponMinOrderAmount" required [(ngModel)]="coupons.couponMinOrderAmount" 
+    name="couponMinOrderAmount" #couponMinOrderAmount="ngModel">
+    
+    <!-- <label for="issuedBy">Issued By:</label>
+    <select id="issuedBy" required [(ngModel)]="coupons.issuedBy" 
+    name="issuedBy" #issuedBy="ngModel">
+      <option value="admin">Admin</option>
+      <option value="merchant">Merchant</option>
+    </select><br>
+   -->
+    <button type="submit" [disabled]="!actCreateForm.form.valid" class="btn btn-success">ADD COUPON</button>
+  </form>
+
+  
+</div>
+
+    <div [hidden]="!submitted">
+      <h4>Submitted successfully!</h4>
+    </div>
+</div>
+
